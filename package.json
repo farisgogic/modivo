@@ -1,0 +1,37 @@
+{
+  "name": "modivo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "eslint .",
+    "preview": "node scripts/preview.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "playwright test",
+    "validate:catalog": "tsx scripts/validate-catalog.ts",
+    "prebuild": "npm run validate:catalog"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "lighthouse": "^12.8.2",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  }
+}

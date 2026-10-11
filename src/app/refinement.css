@@ -1,0 +1,926 @@
+/* MODIVO / Studio edition — a sharper, more tactile editorial system. */
+:root {
+  --paper: #f7f7f2;
+  --ink: #20251f;
+  --muted: #60675c;
+  --line: #d8dcd1;
+  --citrus: #dbf46a;
+}
+.site-header {
+  height: 106px;
+}
+.wordmark {
+  font-weight: 750;
+  letter-spacing: -0.08em;
+}
+.main-nav {
+  font-size: 13px;
+}
+.nav-contact {
+  border-radius: 30px;
+  padding: 12px 20px;
+  gap: 26px;
+  border-color: #abb29f;
+}
+.header-note {
+  font-size: 11px;
+}
+.hero {
+  grid-template-columns: 1.05fr 1fr;
+  column-gap: 22px;
+  min-height: 720px;
+  padding-top: 42px;
+  padding-bottom: 102px;
+}
+.hero-copy {
+  padding-top: 30px;
+}
+.hero-copy > .section-kicker {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.hero h1 {
+  font-size: clamp(70px, 7.8vw, 124px);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  margin-top: 32px;
+  margin-bottom: 26px;
+}
+.hero h1 .serif {
+  font-size: 1.12em;
+}
+.headline-spark {
+  display: inline-block;
+  width: 0.59em;
+  height: 0.59em;
+  margin-left: 22px;
+  vertical-align: 8px;
+  color: var(--ink);
+  transform: rotate(-8deg);
+}
+.hero-copy > p {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.button {
+  padding: 18px 24px;
+  border-radius: 30px;
+  font-size: 12px;
+  min-height: 54px;
+}
+.button-dark:hover {
+  background: #35402d;
+}
+.hero-small {
+  margin-top: 23px;
+  font-size: 10px;
+}
+.hero-baseline {
+  bottom: 30px;
+  padding-top: 22px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.hero-object {
+  isolation: isolate;
+  min-height: 502px;
+  margin-top: 0;
+  background: #e9ede2;
+  border-radius: 4px;
+  overflow: hidden;
+  perspective: 1300px;
+}
+.hero-object::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  z-index: -1;
+  background-image: radial-gradient(#87917b 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+.object-orbit {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border: 1px solid #c1cbb6;
+  border-radius: 50%;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.object-orbit::before {
+  content: '';
+  position: absolute;
+  inset: -38px;
+  border: 1px solid #ced5c5;
+  border-radius: 50%;
+}
+.object-annotation {
+  display: flex;
+  justify-content: space-between;
+  top: 22px;
+  left: 24px;
+  right: 24px;
+  font-size: 8px;
+  letter-spacing: 0.09em;
+  color: #4b5740;
+}
+.object-annotation > span:last-child {
+  padding: 0;
+}
+.sheet-stack {
+  height: 373px;
+  margin-top: 47px;
+}
+.stack-front,
+.stack-middle,
+.stack-back {
+  width: 240px;
+  height: 315px;
+  top: 29px;
+  transition:
+    transform 0.7s var(--ease),
+    filter 0.7s var(--ease);
+}
+.stack-front {
+  transform: translateX(-62%) rotate(-10deg);
+}
+.stack-middle {
+  transform: translateX(-32%) rotate(13deg);
+  top: 30px;
+}
+.stack-back {
+  transform: translateX(-81%) rotate(-20deg);
+  top: 23px;
+}
+.selected-stationery .stack-middle {
+  z-index: 4;
+  transform: translateX(-52%) rotate(5deg) translateY(-8px);
+}
+.selected-stationery .stack-front {
+  z-index: 2;
+  transform: translateX(-84%) rotate(-16deg) scale(0.94);
+}
+.selected-stationery .stack-back {
+  z-index: 1;
+  transform: translateX(-20%) rotate(18deg) scale(0.94);
+}
+.selected-creative .stack-back {
+  z-index: 4;
+  transform: translateX(-53%) rotate(-5deg) translateY(-8px);
+}
+.selected-creative .stack-front {
+  z-index: 1;
+  transform: translateX(-24%) rotate(17deg) scale(0.94);
+}
+.selected-creative .stack-middle {
+  z-index: 2;
+  transform: translateX(-83%) rotate(-18deg) scale(0.94);
+}
+.object-seal {
+  bottom: 123px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background: var(--ink);
+  color: var(--citrus);
+  transform: rotate(10deg);
+  border-radius: 50%;
+  padding-top: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.object-seal svg {
+  width: 24px;
+  height: 24px;
+  --mark-cutout: var(--ink);
+}
+.object-seal span {
+  font-size: 6px;
+  margin-top: 6px;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+}
+.object-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  margin: 5px 22px 0;
+  border-top: 1px solid #bec8b4;
+  padding-top: 15px;
+  gap: 4px;
+}
+.object-controls button {
+  flex: 1;
+  background: transparent;
+  text-align: left;
+  font-size: 9px;
+  padding: 10px 8px;
+  border-radius: 3px;
+  min-height: 44px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.object-controls button span {
+  font-size: 8px;
+  margin-right: 7px;
+  color: #626d56;
+}
+.object-controls button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.object-controls button[aria-pressed='true'] span {
+  color: var(--citrus);
+}
+.object-controls button:hover:not([aria-pressed='true']) {
+  background: #d4ddc8;
+}
+.object-caption {
+  font-size: 6px;
+  margin: 16px 24px 20px;
+  letter-spacing: 0.07em;
+}
+.planner-sheet {
+  background: #e0ed9b;
+}
+.creative-sheet {
+  background: #385344;
+  color: #e0f2b1;
+}
+.creative-orbit,
+.creative-orbit::before,
+.creative-orbit::after,
+.creative-orbit span {
+  border-color: #dbefb8;
+}
+.invitation-sheet {
+  background: #f5deca;
+  color: #753c2f;
+}
+.statement-strip {
+  padding: 22px 45px;
+  font-size: clamp(18px, 2.3vw, 35px);
+  background: var(--citrus);
+}
+.statement-strip b {
+  font-size: 16px;
+}
+.section-space {
+  padding-block: 112px;
+}
+.section-kicker {
+  letter-spacing: 0.09em;
+}
+.collections-layout {
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 95px;
+  margin-top: 58px;
+}
+.section-intro h2 {
+  font-size: clamp(48px, 5.2vw, 78px);
+}
+.collection-row > summary {
+  padding: 23px 0;
+}
+.collection-title {
+  font-size: 23px;
+  letter-spacing: -0.05em;
+}
+.collection-mark {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.collection-row[open] .collection-mark {
+  background: var(--citrus);
+}
+.collection-description {
+  margin-left: 80px;
+  padding-right: 20px;
+  max-width: 460px;
+  font-size: 14px;
+}
+.collection-note {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 46px;
+  max-width: 280px;
+  position: relative;
+}
+.collection-note > span {
+  font-size: 8px;
+  letter-spacing: 0.06em;
+}
+.collection-note p {
+  margin-top: 11px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.collection-note svg {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  width: 16px;
+}
+.featured-section {
+  background: #eceee7;
+}
+.section-heading {
+  margin-top: 42px;
+  margin-bottom: 48px;
+}
+.product-grid {
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.product-card:nth-child(2) {
+  padding-top: 58px;
+}
+.product-card:nth-child(3) {
+  padding-top: 116px;
+}
+.product-scene {
+  aspect-ratio: 0.83;
+  border-radius: 3px;
+}
+.scene-planner {
+  background: #dce3cd;
+}
+.scene-stationery {
+  background: #e9d6c5;
+}
+.scene-creative {
+  background: #c6d4c8;
+}
+.product-scene::before {
+  content: '';
+  width: 76%;
+  height: 57%;
+  position: absolute;
+  left: 12%;
+  top: 22%;
+  border: 1px solid #ffffff65;
+  transform: rotate(10deg);
+}
+.product-scene .product-art {
+  width: 66%;
+  height: 72%;
+}
+.product-card h3 {
+  font-size: 23px;
+  margin-top: 12px;
+}
+.product-card > p {
+  max-width: 290px;
+  font-size: 13px;
+}
+.product-meta {
+  font-size: 10px;
+  letter-spacing: 0.015em;
+  gap: 10px;
+}
+.product-meta > span:last-child {
+  font-size: 8px;
+  white-space: nowrap;
+}
+.concept-tag {
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  padding: 6px 8px;
+  left: 15px;
+  top: 15px;
+  background: #f7f7f2df;
+}
+.product-open {
+  width: 40px;
+  height: 40px;
+  right: 16px;
+  bottom: 16px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.product-card:hover .product-open {
+  color: var(--ink);
+}
+.scene-edition {
+  position: absolute;
+  bottom: 22px;
+  left: 18px;
+  font-size: 8px;
+  letter-spacing: 0.07em;
+}
+.concept-disclaimer {
+  margin-top: 52px;
+}
+.how-heading {
+  margin-block: 45px 54px;
+}
+.step-number {
+  color: #3f4b34;
+  font-family: inherit;
+  font-size: 15px;
+  font-style: normal;
+}
+.steps h3 {
+  margin-top: 36px;
+  font-size: 22px;
+}
+.steps {
+  gap: 54px;
+}
+.philosophy-section {
+  padding-block: 106px;
+  position: relative;
+  overflow: hidden;
+}
+.philosophy-layout {
+  grid-template-columns: 0.65fr 1.35fr;
+  gap: 70px;
+}
+.philosophy-flower {
+  width: 148px;
+  height: 148px;
+  margin-top: 63px;
+  --mark-cutout: var(--ink);
+  color: var(--citrus);
+  transform: rotate(-8deg);
+}
+.philosophy-side > span {
+  margin-top: 35px;
+}
+.philosophy-section h2 {
+  font-size: clamp(48px, 5.6vw, 83px);
+  line-height: 1.06;
+}
+.philosophy-section h2 .serif {
+  color: var(--citrus);
+}
+.philosophy-principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-block: 24px;
+  border-block: 1px solid #ffffff30;
+  margin-top: 36px;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: #c6d1bd;
+}
+.philosophy-copy {
+  margin-top: 28px;
+  gap: 30px;
+}
+.philosophy-copy p {
+  font-size: 14px;
+}
+.contact-section {
+  padding-block: 105px;
+}
+.contact-layout {
+  align-items: center;
+}
+.contact-copy {
+  max-width: 320px;
+}
+.footer-top {
+  padding-block: 30px;
+}
+.footer-top > .wordmark {
+  display: none;
+}
+.footer-top > p {
+  font-size: 12px;
+}
+.footer-signature {
+  font-size: clamp(100px, 21.5vw, 340px);
+  font-weight: 650;
+  letter-spacing: -0.09em;
+  line-height: 1.05;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 35px;
+  user-select: none;
+}
+.footer-signature > span {
+  font-size: 0.43em;
+  font-weight: 400;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 1.55em;
+  height: 1.55em;
+  display: grid;
+  place-items: center;
+  letter-spacing: 0;
+}
+.footer-bottom {
+  padding-block: 25px;
+  font-size: 10px;
+}
+/* Content is visible immediately; only the composition moves on entrance. */
+.hero-copy {
+  animation: none;
+}
+@media (min-width: 1600px) {
+  .hero {
+    min-height: 800px;
+  }
+  .hero-object {
+    min-height: 566px;
+  }
+  .sheet-stack {
+    height: 435px;
+  }
+  .stack-front,
+  .stack-middle,
+  .stack-back {
+    width: 285px;
+    height: 375px;
+  }
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .hero {
+    column-gap: 18px;
+    min-height: 680px;
+  }
+  .hero-copy {
+    padding-top: 15px;
+  }
+  .hero h1 {
+    font-size: 7.8vw;
+  }
+  .hero-copy > p {
+    font-size: 13px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .hero-object {
+    min-height: 475px;
+  }
+  .sheet-stack {
+    height: 347px;
+  }
+  .stack-front,
+  .stack-middle,
+  .stack-back {
+    width: 190px;
+    height: 253px;
+    top: 42px;
+  }
+  .object-controls {
+    margin-inline: 12px;
+  }
+  .object-controls button {
+    font-size: 8px;
+    padding-inline: 6px;
+  }
+  .object-controls button span {
+    display: none;
+  }
+  .object-seal {
+    right: 12px;
+    bottom: 125px;
+    width: 68px;
+    height: 68px;
+  }
+  .object-seal span {
+    font-size: 5px;
+  }
+  .object-seal svg {
+    width: 20px;
+    height: 20px;
+  }
+  .object-annotation {
+    font-size: 6px;
+    left: 15px;
+    right: 15px;
+  }
+  .collections-layout {
+    gap: 45px;
+  }
+  .collection-title {
+    font-size: 18px;
+  }
+  .collection-description {
+    margin-left: 69px;
+  }
+  .product-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .product-card h3 {
+    font-size: 19px;
+  }
+  .product-grid {
+    gap: 18px;
+  }
+  .philosophy-layout {
+    gap: 35px;
+  }
+  .philosophy-principles {
+    gap: 14px;
+  }
+  .main-nav {
+    gap: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    height: 88px;
+  }
+  .main-nav {
+    font-size: 14px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 16px;
+    padding-bottom: 90px;
+    min-height: 0;
+    row-gap: 30px;
+  }
+  .hero-copy {
+    padding: 0;
+  }
+  .hero h1 {
+    font-size: clamp(64px, 13.6vw, 100px);
+    margin: 27px 0 20px;
+  }
+  .headline-spark {
+    width: 0.54em;
+    height: 0.54em;
+    margin-left: 16px;
+    vertical-align: 5px;
+  }
+  .hero-copy > p {
+    font-size: 14px;
+  }
+  .hero-copy > .section-kicker {
+    font-size: 8px;
+  }
+  .hero .button {
+    margin-top: 23px;
+  }
+  .hero-object {
+    height: auto;
+    min-height: 450px;
+    margin: 0;
+    max-width: 520px;
+  }
+  .sheet-stack {
+    height: 318px;
+    margin-top: 42px;
+  }
+  .stack-front,
+  .stack-middle,
+  .stack-back {
+    width: clamp(166px, 48vw, 224px);
+    height: auto;
+    aspect-ratio: 240/315;
+    top: 27px;
+  }
+  .object-annotation {
+    font-size: 7px;
+    top: 17px;
+    left: 16px;
+    right: 16px;
+  }
+  .object-orbit {
+    width: 260px;
+    height: 260px;
+    top: 43%;
+  }
+  .object-seal {
+    bottom: 121px;
+    right: 14px;
+    width: 66px;
+    height: 66px;
+    padding-top: 9px;
+  }
+  .object-seal svg {
+    width: 20px;
+    height: 20px;
+  }
+  .object-seal span {
+    font-size: 5px;
+    margin-top: 4px;
+  }
+  .object-controls {
+    margin: 0 14px;
+    padding-top: 13px;
+  }
+  .object-controls button {
+    font-size: 8px;
+    padding: 9px 5px;
+  }
+  .object-controls button span {
+    margin-right: 4px;
+    font-size: 7px;
+  }
+  .object-caption {
+    margin: 14px 16px 18px;
+    font-size: 5px;
+  }
+  .hero-baseline {
+    font-size: 7px;
+    bottom: 25px;
+  }
+  .hero-baseline a {
+    font-size: 7px;
+  }
+  .statement-strip {
+    padding: 20px 23px;
+    gap: 12px 15px;
+    font-size: 19px;
+  }
+  .statement-strip b {
+    font-size: 12px;
+  }
+  .section-space {
+    padding-block: 68px;
+  }
+  .collections-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 33px;
+  }
+  .section-intro h2 {
+    font-size: 48px;
+  }
+  .collection-note {
+    display: none;
+  }
+  .collection-row > summary {
+    padding: 19px 0;
+  }
+  .collection-title {
+    font-size: 18px;
+  }
+  .collection-mark {
+    width: 36px;
+    height: 36px;
+  }
+  .collection-description {
+    margin-left: 65px;
+    font-size: 13px;
+  }
+  .section-heading {
+    margin: 30px 0 35px;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .product-card:nth-child(2),
+  .product-card:nth-child(3) {
+    padding-top: 0;
+  }
+  .product-scene {
+    aspect-ratio: 1.03;
+  }
+  .product-scene .product-art {
+    width: 55%;
+    height: 76%;
+  }
+  .product-meta {
+    font-size: 10px;
+  }
+  .product-card h3 {
+    font-size: 23px;
+  }
+  .product-card > p {
+    max-width: none;
+  }
+  .concept-disclaimer {
+    margin-top: 35px;
+  }
+  .how-heading {
+    margin-block: 30px;
+  }
+  .steps {
+    gap: 25px;
+  }
+  .step-number {
+    font-size: 15px;
+  }
+  .steps h3 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  .philosophy-section {
+    padding-block: 62px;
+  }
+  .philosophy-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .philosophy-flower {
+    width: 42px;
+    height: 42px;
+    margin-top: 0;
+  }
+  .philosophy-section h2 {
+    font-size: clamp(39px, 9.5vw, 64px);
+  }
+  .philosophy-principles {
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 30px;
+    padding-block: 21px;
+    font-size: 9px;
+  }
+  .philosophy-copy {
+    margin-top: 25px;
+  }
+  .contact-section {
+    padding-block: 65px;
+  }
+  .contact-layout {
+    align-items: flex-start;
+  }
+  .contact-copy {
+    max-width: none;
+  }
+  .footer-top {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .footer-top > p {
+    margin: 0;
+    font-size: 10px;
+  }
+  .footer-top > div {
+    flex-basis: auto;
+    margin-left: auto;
+    font-size: 10px;
+  }
+  .footer-signature {
+    font-size: 22vw;
+    padding-block: 12px 22px;
+  }
+  .footer-signature > span {
+    font-size: 0.4em;
+  }
+  .footer-bottom {
+    font-size: 9px;
+  }
+  .detail-scene {
+    aspect-ratio: 1;
+  }
+  .detail-scene .product-art {
+    width: 60%;
+    height: 77%;
+  }
+}
+@media (max-width: 370px) {
+  .hero h1 {
+    font-size: 60px;
+  }
+  .hero-object {
+    min-height: 404px;
+  }
+  .sheet-stack {
+    height: 275px;
+  }
+  .stack-front,
+  .stack-middle,
+  .stack-back {
+    width: 162px;
+  }
+  .object-controls button span {
+    display: none;
+  }
+  .object-controls button {
+    font-size: 8px;
+  }
+  .object-caption {
+    font-size: 4.7px;
+  }
+  .object-seal {
+    bottom: 119px;
+  }
+  .collection-title {
+    font-size: 16px;
+  }
+  .product-meta > span:last-child {
+    font-size: 7px;
+  }
+  .section-intro h2 {
+    font-size: 43px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .footer-top > div {
+    margin-left: 0;
+  }
+}
